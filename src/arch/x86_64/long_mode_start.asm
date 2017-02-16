@@ -4,9 +4,9 @@ section .text
 bits 64
 long_mode_start:
 
-	;call the rust main:
-	;extern rust_main
-	;call rust_main
+	;call the kernel main:
+	extern kmain
+	call kmain
 	
     .os_returned:
     ; rust main returned, print `OS returned!`
