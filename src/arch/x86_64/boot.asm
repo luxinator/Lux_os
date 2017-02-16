@@ -3,15 +3,15 @@ extern long_mode_start
 section .text
 bits 32
 start:
-	mov esp, stack_top
+    mov esp, stack_top
     mov edi, ebx    ; Multiboot pointer to memory with extra info
 
-	call check_multiboot
-	call check_cpuid
-	call check_long_mode
+    call check_multiboot
+    call check_cpuid
+    call check_long_mode
 
-	call set_up_page_tables
-	call enable_paging
+    call set_up_page_tables
+    call enable_paging
     call set_up_SSE
     
 ; load the 64-bit GDT
@@ -22,26 +22,26 @@ start:
     mov ds, ax  ; data selector
     mov es, ax  ; extra selector
 
-	jmp gdt64.code:long_mode_start
+    jmp gdt64.code:long_mode_start
 
-	;mov dword [0xb8000], 0x2f4b2f4f
-	;hlt
+    ;mov dword [0xb8000], 0x2f4b2f4f
+    ;hlt
 ;Prints 'ERR:' and the given error code to screen and hangs
 ;parameter: Error code in ASCII in al
 error:
-	mov dword [0xb8000], 0x4f524f45
+    mov dword [0xb8000], 0x4f524f45
     mov dword [0xb8004], 0x4f3a4f52
     mov dword [0xb8008], 0x4f204f20
     mov byte  [0xb800a], al
     hlt
 
 check_multiboot:
-	cmp eax, 0x36d76289
-	jne .no_multiboot
-	ret
+    cmp eax, 0x36d76289
+    jne .no_multiboot
+    ret
 .no_multiboot:
-	mov al, "0"
-	jmp error
+    mov al, "0"
+    jmp error
 
 ; From OS_DEV WIKI
 check_cpuid:

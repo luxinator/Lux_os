@@ -4,10 +4,10 @@ section .text
 bits 64
 long_mode_start:
 
-	;call the kernel main:
-	extern kmain
-	call kmain
-	
+    ;call the rust main:
+    extern kmain
+    call kmain
+    
     .os_returned:
     ; rust main returned, print `OS returned!`
     mov rax, 0x4f724f204f534f4f
