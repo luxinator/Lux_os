@@ -10,9 +10,9 @@
  * http://os.phil-opp.com/printing-to-screen.html
  */
 
-#define FB_START 0x000B8000
-#define FB_WIDTH 25
-#define FB_HEIGHT 80
+#define FB_START 0xB8000
+#define FB_WIDTH 80
+#define FB_HEIGHT 25
 
 // Any Char in the frameBuffer is 16-bits wide (from
 // http://littleosbook.github.io/)
@@ -33,7 +33,7 @@ void write_char_fb(size_t loc,
 
 void scroll_up_fb(){
 	for(size_t i = 0; i < FB_HEIGHT; i++){
-    memcpy(&frameBuffer[i * FB_WIDTH], &frameBuffer[(i+1) * FB_WIDTH], FB_WIDTH);
+    memcpy(frameBuffer +i * FB_WIDTH, frameBuffer + (i+1) * FB_WIDTH, FB_WIDTH);
   }
   y -= 2;
 }
