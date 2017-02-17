@@ -1,4 +1,8 @@
 
+
+## FIRST:
+Read out the Mutliboot headers
+
 ## Build a small OS for fun and profit!
 Uses a general C/C++ compiler like Clang or gcc
 

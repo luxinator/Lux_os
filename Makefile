@@ -4,6 +4,7 @@ export OBJDIR:= $(PWD)/build
 export SRCDIR := src
 export INCLUDES := src
 export CFLAGS = -g -Wall -Wextra
+
 LDFLAGS := 
 LIBS := $(LIBS) -nostdlib
 

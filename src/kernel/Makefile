@@ -4,10 +4,15 @@ LDFLAGS:=$(LDFLAGS)
 LIBS:=$(LIBS) -nostdlib -lk -lgcc
 
 SOURCES  := $(wildcard *.c)
-INCLUDES := $(wildcard *.h)
+INCLUDES := $(wildcard *.h) $(wildcard ../arch/$(arch)/*.h)
+INCDIR := -I../arch/$(arch)/ -I../libc/
 # OBJDIR = ../build
-export K_OBJECTS  := $(SOURCES:%.c=$(OBJDIR)/%.o)
+K_OBJECTS  := $(SOURCES:%.c=$(OBJDIR)/%.o)
+
+.PHONY: KERNEL
+
+KERNEL: $(K_OBJECTS)
 
 $(K_OBJECTS): $(OBJDIR)/%.o : %.c
-	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) -c $< -o $@ $(CFLAGS) $(INCDIR) 
 

@@ -1,19 +1,18 @@
 
-CFLAGS:=$(CFLAGS) -ffreestanding -fbuiltin 
+CFLAGS:=$(CFLAGS)
 LDFLAGS:=$(LDFLAGS)
 LIBS:=$(LIBS) -nostdlib -lk -lgcc
 
 SOURCES  := $(wildcard *.c)
 INCLUDES := $(wildcard *.h)
 # OBJDIR = ../build
-export L_OBJECTS  := $(SOURCES:%.c=$(OBJDIR)/%.o)
+LOBJECTS  := $(SOURCES:%.c=$(OBJDIR)/%.o)
+LIBKC 	:= $(OBJDIR)/libc_k.a
 
+LIBKC: $(LOBJECTS)
+	$(AR) rcs $@ $(LOBJECTS)
 
-# %.o: %.c $(OBJECTS)
-# 	$(CC) -c $< -o $@ -std=gnu11 $(CFLAGS) $(CPPFLAGS)
-
-
-$(L_OBJECTS): $(OBJDIR)/%.o : %.c
-	@$(CC) $(CFLAGS) -c $< -o $@
-	@echo "Compiled "$<" successfully!"
+$(LOBJECTS): $(OBJDIR)/%.o : %.c
+	$(CC)  -c $< -o $@ $(CFLAGS)
+	
 
