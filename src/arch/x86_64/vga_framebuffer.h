@@ -4,6 +4,9 @@
  * http://littleosbook.github.io/#about-the-book
  * http://os.phil-opp.com/printing-to-screen.html
  */
+#ifndef VGA_BUFFER_H_
+#define VGA_BUFFER_H_
+
 #include <stdint.h>
 #include <stddef.h>
 
@@ -34,20 +37,17 @@ void write_char_fb(size_t loc,
 
 void clear_framebuffer();
 
-void write_line_fb(const char* line,
+void write_fb(const char* data,
                    enum framebuffer_color fg,
                    enum framebuffer_color bg);
 
-void write_line_fb_wob(const char *line);
+void write_fb_wob(const char *data);
 
-// static inline uint8_t make_color(enum vga_color fg, enum vga_color bg)
-// {
-// 	return fg | bg << 4;
-// }
+void putchar_framebuffer(const char c,
+             enum framebuffer_color fg,
+             enum framebuffer_color bg);
 
-// static inline uint16_t make_vgaentry(char c, uint8_t color)
-// {
-// 	uint16_t c16 = c;
-// 	uint16_t color16 = color;
-// 	return c16 | color16 << 8;
-// }
+
+void putchar_framebuffer_wob(const char c);
+
+#endif

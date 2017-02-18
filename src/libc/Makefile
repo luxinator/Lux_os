@@ -9,7 +9,7 @@ INCLUDES := $(wildcard *.h)
 LOBJECTS  := $(SOURCES:%.c=$(OBJDIR)/%.o)
 LIBKC 	:= $(OBJDIR)/libc_k.a
 
-LIBKC: $(LOBJECTS)
+$(LIBKC): $(LOBJECTS)
 	$(AR) rcs $@ $(LOBJECTS)
 
 $(LOBJECTS): $(OBJDIR)/%.o : %.c

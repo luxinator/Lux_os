@@ -1,4 +1,6 @@
-// #include "kernel.h"
+#ifndef KPRINT_H_
+#define KPRINT_H_
+
 #include <stddef.h>
 
 // int fputc(char c, FILE *fp);
@@ -17,4 +19,8 @@ int kputs( const char* s );
 // char* fgets( char *s, size_t n, FILE *fp);
 char* kgets( char * buffer );
 
-int kprintf(const char * s, ...);
+int kprintf(const char* __restrict, ...);
+
+void clear_console();
+
+#endif

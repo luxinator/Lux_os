@@ -1,6 +1,5 @@
 #include <stddef.h>
 
-
 size_t strlen(const char* s);
 
 void* memcpy(void* restrict dstptr, const void* restrict srcptr, size_t size);
