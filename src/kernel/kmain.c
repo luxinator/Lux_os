@@ -1,7 +1,21 @@
 #include "kprint.h"
+#include <io.h>
+
 #include <multiboot2.h>
 
 extern void *start;
+
+
+void printInterrupts_status(){
+	 bool Interputs = are_interrupts_enabled();
+  if(Interputs){
+  	kprintf("Interrupts are enabled!\n");
+  } else {
+  	kprintf("Interrupts are disabled\n");
+  }
+
+
+}
 
 void kmain(void *mutlibootAdress) {
 

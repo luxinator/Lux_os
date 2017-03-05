@@ -1,10 +1,18 @@
 
+# Plan of attack (gracefully stolen from [os-dev](http://wiki.osdev.org/What_order_should_I_make_things_in):
 
-## FIRST:
-Read out the Mutliboot headers
+1. Printing to Screen (done in kprint)
+2. Serial Out/In
+3. Interrupts 
+4. Memory Mangement
+5. Malloc and free
+6. C_lib [os-dev](http://wiki.osdev.org/Porting_Newlib)
 
 ## Build a small OS for fun and profit!
-Uses a general C/C++ compiler like Clang or gcc
+Uses a general C/C++ compiler like Clang or gcc, meaning: Kernel is an ELF executable
+Loaded by a bootloader like GRUB or U-Boot(as squash-fs?)
+
+
 
 Ultimate goal:
 
