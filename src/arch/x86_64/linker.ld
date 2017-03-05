@@ -20,4 +20,7 @@ SECTIONS {
     .data.rel.ro : {
         *(.data.rel.ro.local*) *(.data.rel.ro .data.rel.ro.*)
     }
+
+    .unused_section :
+    {kernel_end = . ;}
 }

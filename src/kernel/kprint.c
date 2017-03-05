@@ -34,7 +34,8 @@ static void printint(int xx, int base, bool sign) {
 }
 
 int kputchar(char c) {
-  return 0;
+  putchar_framebuffer_wob(&c);
+  return 1;
 }
 
 // int fgetc( FILE *fp);
@@ -45,8 +46,10 @@ int kgetchar() {
 
 // int fputs( const char* s, FILE *fp);
 int kputs(const char* s) {
-  return 0;
+  write_fb_wob(s);
+  return 1;
 }
+
 // char* fgets( char *s, size_t n, FILE *fp);
 char* kgets(char* buffer) {
   return NULL;
